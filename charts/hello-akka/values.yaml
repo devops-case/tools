@@ -3,7 +3,7 @@ image:
   tag: 'c1e7bae3566'
 container:
   env:
-  	host: 0.0.0.0
-  	port: 8080
-  	xmx: 512M
-  	xms: 512M
+    host: 0.0.0.0
+    port: 8080
+    xmx: 512M
+    xms: 512M
