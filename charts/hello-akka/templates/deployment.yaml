@@ -19,10 +19,10 @@ spec:
             protocol: TCP
           env:
           - name: SERVER_HOST
-            value: {{ .Values.container.env.host }}
+            value: {{ .Values.env.host }}
           - name: SERVER_PORT
-            value: {{ .Values.container.env.port }}
+            value: {{ .Values.env.port }}
           - name: xmx
-            value: {{ .Values.container.env.xmx }}
+            value: {{ .Values.env.xmx }}
           - name: xms
-            value: {{ .Values.container.env.xms }}
+            value: {{ .Values.env.xms }}
