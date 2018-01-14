@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hello-akka
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hello-akka
+    spec:
+      containers:
+        - name: hello-akka
+          image: hub.pmdr.net:5000/hello-akka:c1e7bae3566
+          ports:
+            - containerPort: 9000
+              protocol: TCP
