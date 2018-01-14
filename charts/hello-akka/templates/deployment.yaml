@@ -1,17 +1,28 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: hello-akka
+  name: {{ template "hello-akka.full_name" . }}
+  labels:
+    {{- include "hello-akka.release_labels" . | indent 4 }}
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: hello-akka
+        {{- include "hello-akka.release_labels" . | indent 8 }}
     spec:
       containers:
         - name: hello-akka
-          image: hub.pmdr.net:5000/hello-akka:c1e7bae3566
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           ports:
-            - containerPort: 9000
-              protocol: TCP
+          - containerPort: 8080
+            protocol: TCP
+          env:
+          - name: SERVER_HOST
+            value: {{ .Values.env.host }}
+          - name: SERVER_PORT
+            value: {{ .Values.env.port }}
+          - name: xmx
+            value: {{ .Values.env.xmx }}
+          - name: xms
+            value: {{ .Values.env.xms }}

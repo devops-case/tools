@@ -1,12 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-akka
+  name: {{ template "hello-akka.full_name" . }}
+  labels:
+    {{- include "hello-akka.release_labels" . | indent 4 }}
 spec:
   type: NodePort
   ports:
-  - port: 8089
-    targetPort: 9000
+  - port: 8080
+    targetPort: 8080
     protocol: TCP
   selector:
-    app: hello-akka
+    app: {{ template "hello-akka.full_name" . }}
