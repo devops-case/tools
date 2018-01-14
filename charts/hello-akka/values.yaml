@@ -1,4 +1,3 @@
-# Default Values
 image:
   repository: hub.pmdr.net:5000/hello-akka
   tag: 'c1e7bae3566'
