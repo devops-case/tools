@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ template "hello-akka.full_name" . }}
+  name: "{{ template 'hello-akka.full_name' . }}"
   labels:
     {{- include "hello-akka.release_labels" . | indent 4 }}
 spec:
@@ -13,16 +13,16 @@ spec:
     spec:
       containers:
         - name: hello-akka
-          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
           - containerPort: 8080
             protocol: TCP
           env:
           - name: SERVER_HOST
-            value: {{ .Values.env.host }}
+            value: "{{ .Values.env.host }}"
           - name: SERVER_PORT
             value: "{{ .Values.env.port }}"
           - name: xmx
-            value: {{ .Values.env.xmx }}
+            value: "{{ .Values.env.xmx }}"
           - name: xms
-            value: {{ .Values.env.xms }}
+            value: "{{ .Values.env.xms }}"
