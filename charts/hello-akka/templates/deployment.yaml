@@ -1,7 +1,7 @@
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: "{{ template 'hello-akka.full_name' . }}"
+  name: {{ template "hello-akka.full_name" . }}
   labels:
     {{- include "hello-akka.release_labels" . | indent 4 }}
 spec:
